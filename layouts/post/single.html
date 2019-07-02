@@ -1,0 +1,70 @@
+{{ define "main" }}
+{{ $Site := $.Site }}
+
+<div
+  class="blog-banner"
+  {{- with .Params.featuredImage -}}
+    style="background-image: url({{ .url }}?w=1920&h=1000&fit=fill&q=40);"
+  {{- end -}}
+>
+  <div class="image-overlay"></div>
+</div>
+<main class="section recessed">
+  <div class="container">
+    <div class="columns is-variable is-8">
+      <div class="column is-two-thirds">
+        <div class="blog-title-section">
+          {{ if .Params.categories }}
+          <div class="tags" style="margin-bottom: 0.5rem; margin-top: -3.5rem;">
+            {{ range $i, $e := .Params.categories }}
+            {{ $path := print "category/" .id ".md" }}
+            {{ with $Site.GetPage $path }}
+            <a
+              href="{{ .RelPermalink }}"
+              class="tag is-primary is-medium"
+              >{{- .Title -}}</a
+            >
+            {{ end }}
+            {{ end }}
+          </div>
+          {{ end }}
+          <h1 class="blog-title title">{{ .Title }}</h1>
+
+          {{ $date := dateFormat "Jan 2, 2006" .Date }}
+          {{ with.Params.author }}
+          {{ $path := print "author/" .id ".md" }}
+          {{ with $.Site.GetPage $path }}
+          <div class="author-meta">
+            <figure class="image">
+              <img
+                src="{{ .Params.photo.url }}?w=100&h=100&fit=fill&f=face"
+                alt=""
+                width="20"
+              />
+            </figure>
+            <div>
+              <div>{{ $date }}</div>
+              <div>{{ .Params.displayName }}</div>
+            </div>
+          </div>
+          {{ end }}
+          {{ end }}
+        </div>
+        {{ with.Params.featuredImage }}
+        <figure class="image is-16by9 blog-image">
+          <img src="{{ .url }}?w=800&h=450&q=80&fit=fill" alt="" />
+        </figure>
+        {{ end }}
+        <div class="content blog-content">
+          {{ range.Params.content }}
+          {{ partial "rich-text.html" (dict "current" . "Site" $.Site) }}
+          {{ end }}
+        </div>
+      </div>
+      <aside class="column">
+        <div class="title">Share This</div>
+      </aside>
+    </div>
+  </div>
+</main>
+{{ end }}

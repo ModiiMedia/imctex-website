@@ -1,0 +1,64 @@
+{{ define "main" }}
+<section class="hero is-light">
+    <div class="hero-body">
+        <div class="container">
+            <div class="columns">
+                <div class="column">
+                    <div class="title has-text-grey">{{ .Title }}</div>
+                </div>
+                <div class="column is-narrow">
+                    <nav class="breadcrumb" aria-label="breadcrumbs">
+                        <ul>
+                            <li><a href="/">
+                                <span class="icon is-small">
+                                    <i class="fas fa-home"></i>
+                                </span>
+                                <span>Home</span>
+                                </a>
+                            </li>
+                            <li><a href="">{{ .Title }}</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<main class="section">
+    <div class="container">
+        <div class="columns">
+            <div class="column is-two-thirds">
+                <div class="columns is-multiline">
+                    {{ range .Pages }}
+                        <div class="column is-half">
+                            <div class="card">
+                                <div class="card-image">
+                                    <a href="{{ .RelPermalink }}">
+                                    <figure class="image is-2by1">
+                                        {{ with .Params.featuredImage }}
+                                            <img src="{{ .url }}?w=698&h=349&q=80&fit=fill&fl=progressive" alt="
+                                                {{- if .description -}}
+                                                    {{- .description -}}
+                                                {{- else -}}
+                                                    {{- .title -}}
+                                                {{- end -}}">
+                                        {{ end }}
+                                    </figure>
+                                    </a>
+                                </div>
+                                <div class="card-content">
+                                    <h2 class="subtitle" style="margin-bottom: 0.5rem">
+                                        <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+                                    </h2>
+                                    <div style="margin-bottom: 1.5rem">{{ .Params.content_plaintext | truncate 150 }}</div>
+                                    <a href="{{ .RelPermalink }}" class="button is-primary">Read More</a>
+                                </div>
+                            </div>
+                        </div>
+                    {{ end }}
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{{ end }}

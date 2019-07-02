@@ -1,0 +1,29 @@
+singleTypes:
+  - id: settings
+    directory: /data/
+    fileName: settings
+    fileExtension: yaml
+
+repeatableTypes:
+  - id: _accordianItem
+    directory: /content/_accordianItem/
+    isHeadless: true
+  - id: _inlinePhoto
+    directory: /content/_inlinePhoto/
+    isHeadless: true
+  - id: _video
+    directory: /content/_video/
+    isHeadless: true
+  - id: _seoFields
+    directory: /content/_seoFields/
+    isHeadless: true
+  - id: author
+    directory: /content/author/
+  - id: post
+    directory: /content/post/
+  - id: postCategory
+    directory: /content/category/
+  - id: service
+    directory: /content/service/
+  - id: page
+    directory: /content/

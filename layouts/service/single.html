@@ -1,0 +1,14 @@
+{{ define "main" }}
+    <main class="section">
+        <div class="container">
+            <div class="column is-two-thirds">
+                <div class="content blog-content">
+                    {{ range .Params.content }}
+                        {{ partial "rich-text.html" (dict "current" . "Site" $.Site) }}
+                    {{ end }}    
+                </div>
+            </div>
+            <div class="column"></div>
+        </div>
+    </main>
+{{ end }}

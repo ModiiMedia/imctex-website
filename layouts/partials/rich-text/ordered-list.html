@@ -1,0 +1,14 @@
+{{- $site := $.Site -}}
+<ol>
+    {{- range .current.content -}}
+        {{ if eq .nodeType "list-item" }}
+        <li>
+            {{- range .content -}}
+                {{- if eq .nodeType "paragraph" -}}
+                    {{- partial "rich-text/subpartials/text-content" (dict "current" . "Site" $site ) -}}
+                {{- end -}}
+            {{- end -}}
+        </li>
+        {{- end -}}
+    {{- end -}}
+</ol>

@@ -1,0 +1,8 @@
+{{ $site := .Site }}
+<blockquote>
+    {{ range .current.content }}
+        {{ if eq .nodeType "paragraph" }}
+            {{- partial "rich-text/paragraph" (dict "current" . "Site" $site ) -}}
+        {{ end }}
+    {{ end }}
+</blockquote>

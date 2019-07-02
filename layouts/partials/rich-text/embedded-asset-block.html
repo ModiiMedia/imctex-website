@@ -1,0 +1,24 @@
+{{- $img := .Site.Data.images.imageParameters.richText -}}
+{{- $quality := $img.quality -}}
+{{- $width := $img.width -}}
+{{- $height := $img.height -}}
+{{- $asset := .current.data -}}
+
+    {{- if in $asset.assetType "image" -}}
+        <img src="{{ $asset.url }}
+        {{- if $img -}}?w={{ $width }}&h={{ $height }}&q={{- $quality -}}{{- end -}}"
+        width="{{ $asset.width }}" style="max-width: 100%" alt="
+        {{- if $asset.description -}}
+            {{- $asset.description -}}
+        {{- else -}}
+            {{- $asset.title -}}
+        {{- end -}}" data-source="{{ $asset.url }}">
+    {{- else if in $asset.assetType "audio" -}}
+        <audio controls src="{{ $asset.url }}">
+            Your browser does not support the <code>audio</code> element.
+        </audio>
+    {{- else if in $asset.assetType "video" -}}
+        <video src="{{ $asset.url }}"></video>
+    {{- else -}}
+        <embed src="{{ $asset.url }}" width="100%" height="600px">
+    {{- end -}}

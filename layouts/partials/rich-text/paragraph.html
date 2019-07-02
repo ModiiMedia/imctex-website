@@ -1,0 +1,2 @@
+{{- $baseURL := replace .Site.BaseURL "/" "" -}}
+<p>{{- partial "rich-text/subpartials/text-content" (dict "current" .current "Site" .Site) -}}</p>

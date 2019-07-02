@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    {{ $sass := resources.Get "styles/main.scss" | toCSS | minify }}
+    <link rel="stylesheet" href="{{ $sass.RelPermalink }}">
+    <script src="https://kit.fontawesome.com/30b0099d20.js"></script>
+</head>
+<body>
+    {{ partial "header.html" . }}
+
+    {{ block "main" . }}{{ end }}
+
+    {{ partial "footer.html" . }}
+
+    {{ $navJS := resources.Get "js/navigation.js" }}
+    {{ $js := slice $navJS | resources.Concat "js/bundle.js" | resources.Minify }}
+    <script src="{{ $js.RelPermalink }}"></script>
+</body>
+</html>

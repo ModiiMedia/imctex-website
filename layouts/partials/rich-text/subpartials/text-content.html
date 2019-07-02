@@ -1,0 +1,25 @@
+{{- $baseURL := replace .Site.BaseURL "/" "" -}}
+{{- range .current.content -}}
+    {{- partial "rich-text/subpartials/marks-opening" . -}}
+    {{- if eq .nodeType "hyperlink" -}}
+        {{ $url := .data.uri }}
+        <a href="{{ $url }}"
+            {{- if not (in $url $baseURL) -}}
+                rel="nofollow"
+            {{- end -}}>
+            {{- if .content -}}
+                {{- range .content -}}
+                {{- partial "rich-text/subpartials/marks-opening" . }}
+                    {{- if .value -}}
+                        {{- .value | safeHTML -}}
+                    {{- end -}}
+                {{- partial "rich-text/subpartials/marks-closing" . -}}
+                {{- end -}}
+            {{- end -}}
+            {{- if .value -}}{{- .value -}}{{- end -}}
+        </a>
+    {{- else -}}
+        {{- if .value -}}{{- .value | safeHTML -}}{{- end -}}
+    {{- end -}}
+    {{- partial "rich-text/subpartials/marks-closing" . -}}
+{{- end -}}

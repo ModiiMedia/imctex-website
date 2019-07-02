@@ -1,0 +1,14 @@
+<!-- closing tags for standing text modifications -->
+{{- if .marks -}}
+{{- range .marks -}}
+    {{- if eq .type "bold" -}}
+        </strong>
+    {{- end -}}
+    {{- if eq .type "italic" -}}
+        </em>
+    {{- end -}}
+    {{- if eq .type "underline" -}}
+        </u>
+    {{- end -}}
+{{- end -}}
+{{- end -}}

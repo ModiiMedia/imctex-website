@@ -1,0 +1,23 @@
+{
+  "name": "imctex-website",
+  "version": "1.0.0",
+  "description": "website for integrative medicine consultants of texas",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prestart": "node importNodeModules && contentful-hugo",
+    "start": "hugo server"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.19.0",
+    "bulma": "^0.7.5",
+    "contentful-hugo": "^1.2.0",
+    "fs-extra": "^8.1.0"
+  },
+  "devDependencies": {
+    "concurrently": "^4.1.1",
+    "node-sass": "^4.12.0"
+  }
+}
