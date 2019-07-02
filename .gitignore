@@ -3,6 +3,7 @@ node_modules
 resources
 assets/styles/_dependencies
 data
+.env
 
 # ignore all .md files in content except list pages in subdirectories (_index.md)
 content/*/[!_]*.md
