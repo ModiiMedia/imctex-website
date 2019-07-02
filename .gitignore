@@ -2,5 +2,9 @@ public
 node_modules
 resources
 assets/styles/_dependencies
-content*
-!content/service/_index.md
+data
+
+# ignore all .md files in content except list pages in subdirectories (_index.md)
+content/*/[!_]*.md
+content/*/*/*
+content/*.md

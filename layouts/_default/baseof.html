@@ -17,7 +17,8 @@
     {{ partial "footer.html" . }}
 
     {{ $navJS := resources.Get "js/navigation.js" }}
-    {{ $js := slice $navJS | resources.Concat "js/bundle.js" | resources.Minify }}
+    {{ $accordionJS := resources.Get "js/accordion.js" }}
+    {{ $js := slice $navJS $accordionJS | resources.Concat "js/bundle.js" | resources.Minify }}
     <script src="{{ $js.RelPermalink }}"></script>
 </body>
 </html>

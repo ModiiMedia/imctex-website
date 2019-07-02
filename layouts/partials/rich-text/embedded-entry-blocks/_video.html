@@ -1,0 +1,8 @@
+{{ with .Site.GetPage "_video" .id }}
+    {{ if in .Params.videoUrl "vimeo" }}
+        {{ $id := replace .Params.videoUrl "https://vimeo.com/" "" }}
+        <div class="iframe-wrapper">
+            <iframe src="https://player.vimeo.com/video/{{ $id }}"></iframe>
+        </div>
+    {{ end }}
+{{ end }}

@@ -1,0 +1,16 @@
+{{ $site := .Site }}
+{{ with .Site.GetPage .type .id }}
+    <article class="accordion" id="{{ .File.UniqueID }}">
+        <div data-acc="{{ .File.UniqueID }}" class="accordion-trigger accordion-heading">
+            <i class="fas fa-caret-down"></i>
+            <h2>{{ .Params.heading }}</h2>            
+        </div>
+        <div class="accordion-content content">
+            {{ range .Params.content }}
+                {{ partial "rich-text.html" (dict "current" . "Site" $site) }}
+            {{ end }}
+        </div>
+    </article>
+{{ else }}
+    {{ .id }} not found
+{{ end }}

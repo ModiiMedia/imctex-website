@@ -1,0 +1,63 @@
+.accordion {
+    padding-top: 100px;
+    margin-top: -100px;
+    margin-bottom: 1.5em;
+    .accordion-trigger {
+        display: block;
+        cursor: pointer;
+    }
+    .accordion-heading {
+        display: flex;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        align-items: center;
+        background: $light;
+        color: $primary;
+        border: 1px solid $grey-lighter;
+        transition: background 200ms ease, color 200ms ease;
+        -moz-transition: background 200ms ease, color 200ms ease;
+        -webkit-transition: background 200ms ease color 200ms ease;
+        -o-transition: background 200ms ease, color 200ms ease;
+        // border-radius: 5px;
+        &:hover {
+            background: $grey-lighter;
+            h2 {
+                color: $primary-darker
+            }
+        }
+        h2 {
+            flex-grow: 1;
+            font-size: 1.2em;
+            padding: 1em 1em 1em 0em;
+            margin: 0;
+            color: $primary;
+            transition: background 200ms ease, color 200ms ease;
+            -moz-transition: background 200ms ease, color 200ms ease;
+            -webkit-transition: background 200ms ease color 200ms ease;
+            -o-transition: background 200ms ease, color 200ms ease;
+        }
+        i {
+            padding: 1em;
+            color: $dark;
+            font-size: 1.2em;
+            transition: transform 200ms ease;
+            -moz-transition: transform 200ms ease;
+            -webkit-transition: transform 200ms ease;
+            -o-transition: transform 200ms ease;
+        }
+    }
+    .accordion-content {
+        display: none;
+        padding: 2em;
+    }
+    &.active {
+        .accordion-heading {
+            i {
+                transform: rotateZ(-180deg)
+            }
+        }
+        .accordion-content {
+            display: block;
+        }
+    }
+}

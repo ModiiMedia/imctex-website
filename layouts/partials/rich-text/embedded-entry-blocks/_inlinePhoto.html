@@ -1,0 +1,10 @@
+{{ with .Site.GetPage "_inlinePhoto" .id }}
+    <figure class="floating-photo {{ .Params.floatPosition | urlize }}">
+
+        <img src="{{ .Params.photo.url }}
+            {{- if eq .Params.floatPosition "full width" -}}
+            ?w=900&fit=fill
+            {{- else -}}?w=700&fit=fill
+            {{- end -}}" alt="{{ .Params.altText }}">
+    </figure>
+{{ end }}

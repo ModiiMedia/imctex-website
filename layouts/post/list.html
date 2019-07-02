@@ -1,29 +1,5 @@
 {{ define "main" }}
-<section class="hero is-light">
-    <div class="hero-body">
-        <div class="container">
-            <div class="columns">
-                <div class="column">
-                    <div class="title has-text-grey">{{ .Title }}</div>
-                </div>
-                <div class="column is-narrow">
-                    <nav class="breadcrumb" aria-label="breadcrumbs">
-                        <ul>
-                            <li><a href="/">
-                                <span class="icon is-small">
-                                    <i class="fas fa-home"></i>
-                                </span>
-                                <span>Home</span>
-                                </a>
-                            </li>
-                            <li><a href="">{{ .Title }}</a></li>
-                        </ul>
-                    </nav>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+{{ partial "page-header-with-breadcrumbs.html" . }}
 <main class="section">
     <div class="container">
         <div class="columns">

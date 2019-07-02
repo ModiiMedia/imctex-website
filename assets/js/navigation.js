@@ -1,5 +1,7 @@
 const mainHeader = document.getElementById('main-header')
 
+changeNavStyle();
+
 window.onscroll = function() {
     changeNavStyle();
 }

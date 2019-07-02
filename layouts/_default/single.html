@@ -1,0 +1,16 @@
+{{ define "main" }}
+    {{ partial "page-header-with-breadcrumbs.html" . }}
+    <main class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-two-thirds">
+                    <div class="content">
+                        {{ range .Params.content }}
+                            {{ partial "rich-text.html" (dict "current" . "Site" $.Site)}}
+                        {{ end }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+{{ end }}

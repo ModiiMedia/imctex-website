@@ -1,26 +1,11 @@
-<div>
-    {{ $id := .current.data.id }}
-    {{ if eq .current.data.contentType "_video" }}
-        {{ with $.Site.GetPage "_video" $id }}
-            {{ if in .Params.videoUrl "vimeo" }}
-                {{ $id := replace .Params.videoUrl "https://vimeo.com/" "" }}
-                <div class="iframe-wrapper">
-                    <iframe src="https://player.vimeo.com/video/{{ $id }}"></iframe>
-                </div>
-            {{ end }}
-        {{ end }}
-    {{ else if eq .current.data.contentType "_inlinePhoto" }}
-        {{ with $.Site.GetPage "_inlinePhoto" $id }}
-            <img src="{{ .Params.photo.url }}" alt="" style="float: left; margin-right: 1rem; margin-bottom: 1rem;">
-        {{ end }}
-    {{ else }}
-    {{ with $.Site.GetPage "posts" $id }}
-        <a href="{{ .RelPermalink }}">
-            <h1>{{ .Title }}</h1>
-            {{ with .Params.featuredImage }}
-                <img src="{{ .url }}" style="max-width: 100%">
-            {{ end }}
-        </a>
-    {{ end }}
-    {{ end }}
-</div>
+{{ $id := .current.data.id }}
+{{ $type := .current.data.contentType }}
+{{ $partialPath := print "rich-text/embedded-entry-blocks/" $type ".html" }}
+
+{{ if fileExists (print "layouts/partials/" $partialPath) }}
+    {{ partial $partialPath (dict "id" $id "type" $type "Site" .Site) }}
+{{ else }}
+<p style="padding: 2rem; background: lightgoldenrodyellow">
+    Entry Block Type Missing:<br>
+    <strong>{{ $type }}.html</strong> not found in {{ print "partials/" $partialPath }}</p>
+{{ end }}
