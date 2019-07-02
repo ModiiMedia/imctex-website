@@ -1,0 +1,32 @@
+{{ define "main" }}
+<div class="hero is-light">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title has-text-grey-light">{{ .Title }}</h1>
+    </div>
+  </div>
+</div>
+<main class="section">
+  <div class="container">
+    <div class="columns is-multiline is-variable is-5">
+      {{ range.Pages }}
+      <div class="column is-one-third">
+        <div class="card">
+          <div class="card-content">
+            <div class="content">"{{ .Params.content }}"</div>
+            <div>
+              <div class="subtitle">{{ .Params.customerName }}</div>
+              <div>
+                {{ with.Params.customerAge }}{{ . }} year old, {{ end }}
+                {{ with.Params.customerCity }}resident of {{ . }},{{ end }}
+                {{ with.Params.customerState }} {{ . }}{{ end }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {{ end }}
+    </div>
+  </div>
+</main>
+{{ end }}

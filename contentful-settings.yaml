@@ -27,3 +27,5 @@ repeatableTypes:
     directory: /content/service/
   - id: page
     directory: /content/
+  - id: testimonial
+    directory: /content/testimonials/

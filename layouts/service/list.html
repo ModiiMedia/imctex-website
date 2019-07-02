@@ -1,0 +1,31 @@
+{{ define "main" }}
+<section class="hero"></section>
+<main class="section">
+  <div class="container">
+    <div
+      class="content"
+      style="max-width: 700px; margin: 0 auto; text-align: center"
+    >
+      {{ .Content }}
+    </div>
+    <div class="columns is-multiline">
+      {{ range sort .Pages ".Title" "asc" }}
+      <div class="column is-one-third">
+        <a href="{{ .RelPermalink }}">
+          <div class="card">
+            <div class="card-image">
+              <figure class="image is-2by1">
+                <img src="{{ .Params.featuredImage.url }}" alt="" />
+              </figure>
+            </div>
+            <div class="card-content">
+              <h2 class="subtitle has-text-primary has-text-weight-semibold">{{ .Title }}</h2>
+            </div>
+          </div>
+        </a>
+      </div>
+      {{ end }}
+    </div>
+  </div>
+</main>
+{{ end }}
