@@ -40,6 +40,31 @@ header.site-header {
                 border-bottom: 5px solid $primary;
                 padding-top: 5px;
             }
+            &.has-dropdown {
+                &:hover {
+                    .navbar-link {
+                        background: none;
+                    }
+                }
+                .navbar-link {
+                    padding: 0;
+                    padding-right: 1.2em;
+                    height: 100%;
+                    &:hover {
+                        color: $text;
+                    }
+                    &::after {
+                        right: 0;
+                        border-color: $dark;
+                    }
+                }
+                .navbar-dropdown {
+                    border-top: 5px solid $primary;
+                    .navbar-item {
+                        font-size: 1rem;
+                    }
+                }
+            }
         }
     }
 }

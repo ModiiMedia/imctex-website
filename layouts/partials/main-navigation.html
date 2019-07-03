@@ -1,0 +1,50 @@
+{{- $site := $.Site -}}
+
+{{- range $.Site.Data.menus.mainMenu -}}
+    {{- if eq .contentType "_menuItem" -}}
+        {{- with $site.GetPage "_menuData" .id -}}
+            {{ if eq .Params.isSeparator true }}
+            
+            {{ else }}
+                <a href="
+                {{- if .Params.customURL -}}
+                    {{- .Params.customURL -}}
+                {{- else -}}
+                    {{ with .Params.linkedPage }}
+                    {{- with $site.GetPage .id -}}
+                        {{- .RelPermalink -}}
+                    {{- end -}}
+                    {{ end }}
+                {{- end -}}" class="nav-item">{{ .Params.label }}</a>
+            {{ end }}
+        {{ end }}
+    {{- else if eq .contentType "_menuDropdown" -}}
+        {{- with $site.GetPage "_menuData" .id -}}
+        <div class="nav-item navbar-item has-dropdown is-hoverable">
+            <a href="/service/" class="navbar-link nav-dropdown-trigger">
+                {{- .Params.label -}}
+            </a>
+            <div class="navbar-dropdown">
+                {{- range .Params.menuItems -}}
+                        {{- with $site.GetPage "_menuData" .id -}}
+                            {{ if eq .Params.isSeparator true }}
+                                <hr class="navbar-divider">
+                            {{ else }}
+                                <a class="navbar-item" href="
+                                {{- if .Params.customURL -}}
+                                    {{- .Params.customURL -}}
+                                {{- else -}}
+                                    {{ with .Params.linkedPage }}
+                                        {{- with $site.GetPage .id -}}
+                                            {{- .RelPermalink -}}
+                                        {{- end -}}
+                                    {{ end }}
+                                {{- end -}}">{{ .Params.label }}</a>
+                            {{ end }}
+                        {{- end -}}
+                {{- end -}}
+            </div>
+        </div>
+        {{- end -}}
+    {{- end -}}
+{{- end -}}

@@ -3,8 +3,18 @@ singleTypes:
     directory: /data/
     fileName: settings
     fileExtension: yaml
+  - id: navigation
+    directory: /data/
+    fileName: menus
+    fileExtension: yaml
 
 repeatableTypes:
+  - id: _menuItem
+    directory: /content/_menuData/
+    isHeadless: true
+  - id: _menuDropdown
+    directory: /content/_menuData/
+    isHeadless: true
   - id: _accordianItem
     directory: /content/_accordianItem/
     isHeadless: true
