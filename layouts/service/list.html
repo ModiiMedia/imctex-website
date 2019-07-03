@@ -10,12 +10,12 @@
     </div>
     <div class="columns is-multiline">
       {{ range sort .Pages ".Title" "asc" }}
-      <div class="column is-one-third">
+      <div class="column is-one-quarter-widescreen is-one-third-desktop is-half-tablet is-full-mobile">
         <a href="{{ .RelPermalink }}">
           <div class="card">
             <div class="card-image">
-              <figure class="image is-2by1">
-                <img src="{{ .Params.featuredImage.url }}?w=700&h=350&fit=fill" alt="" />
+              <figure class="image is-16by9">
+                <img src="{{ .Params.featuredImage.url }}?w=700&h=394&fit=fill" alt="" />
               </figure>
             </div>
             <div class="card-content">

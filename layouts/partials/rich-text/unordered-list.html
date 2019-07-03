@@ -6,6 +6,12 @@
             {{ range .content }}
                 {{- if eq .nodeType "paragraph" -}}
                     {{- partial "rich-text/subpartials/text-content" (dict "current" . "Site" $site ) -}}
+                {{- else if eq .nodeType "unordered-list" -}}
+                    {{- partial "rich-text/unordered-list" (dict "current" . "Site" $site ) -}}
+                {{- else if eq .nodeType "ordered-list" -}}
+                    {{- partial "rich-text/ordered-list" (dict "current" . "Site" $site) -}}
+                {{- else -}}
+                    <div style="background: rgb(219, 219, 219); padding: 1.5em;">!!! ERROR: nodeType <strong>{{ .nodeType }}</strong> not found !!!</div>
                 {{- end -}}
             {{ end }}
         </li>
