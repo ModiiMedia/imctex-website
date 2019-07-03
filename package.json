@@ -6,7 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "prestart": "node importNodeModules && contentful-hugo",
-    "start": "hugo server"
+    "start": "hugo server",
+    "prebuild": "node importNodeModules && node wait && contentful-hugo",
+    "build": "hugo --minify"
   },
   "author": "",
   "license": "MIT",
