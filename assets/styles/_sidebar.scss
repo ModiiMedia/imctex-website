@@ -1,0 +1,32 @@
+.post-sidebar {
+
+}
+
+.sidebar-title {
+    font-size: 1.2em;
+    color: $grey-light;
+    display: block;
+    position: relative;
+    padding: 0.5em 0;
+    margin-bottom: 1em;
+    text-transform: uppercase;
+    &::after {
+        content: "";
+        background: $primary;
+        width: 3em;
+        height: 3px;
+        display: block;
+        position: absolute;
+        top: auto;
+        left: 0;
+        right: auto;
+        bottom: 0;
+    }
+}
+
+.sidebar-section {
+    margin-bottom: 3em;
+    &:last-child {
+        margin-bottom: 0;
+    }
+}

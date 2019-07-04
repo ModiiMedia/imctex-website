@@ -69,3 +69,50 @@ main.recessed {
         font-weight: 600;
     }
 }
+
+.sidebar-post-card {
+    align-items: stretch;
+    justify-content: flex-start;
+    margin: 1em 0;
+    background: white;
+    box-shadow: 0 5px 10px rgba(0,0,0, 0.11);
+    border-radius: 5px;
+    overflow: hidden;
+    .image-wrap {
+        flex-basis: 30%;
+        figure {
+            height: 100%;
+            display: flex;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            img {
+                top: 0;
+                left: auto;
+                bottom: 0;
+                right: auto;
+                width: auto;
+                max-width: none;
+                height: 100%;
+            }
+        }
+    }
+    .sidebar-post-card-content {
+        padding: 1em;
+        flex-basis: 70%;
+    }
+    .title {
+        font-size: 1.2em;
+        margin-bottom: 0.5em;
+    }
+    &:hover {
+        .title {
+            color: $primary;
+        }
+    }
+    .tag {
+        font-size: 0.6em;
+    }
+}

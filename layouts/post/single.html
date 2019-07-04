@@ -12,7 +12,7 @@
 <main class="section recessed">
   <div class="container">
     <div class="columns is-variable is-8">
-      <div class="column is-two-thirds">
+      <div class="column is-two-thirds is-full-tablet">
         <div class="blog-title-section">
           {{ if .Params.categories }}
           <div class="tags" style="margin-bottom: 0.5rem; margin-top: -3.5rem;">
@@ -61,8 +61,35 @@
           {{ end }}
         </div>
       </div>
-      <aside class="column">
-        <div class="title">Share This</div>
+      <aside class="column post-sidebar">
+        <div class="sidebar-section">
+          <div class="sidebar-title">Recent Posts</div>
+          {{ range first 3 (where $.Site.RegularPages "Section" "post") }}
+            <a href="{{ .RelPermalink }}">
+              <article class="sidebar-post-card is-flex">
+                <div class="image-wrap">
+                  <figure class="image is-1by1">
+                    <img src="{{ .Params.featuredImage.url }}?w=100&h=100&fit=fill" alt="">
+                  </figure>      
+                </div>
+                <div class="sidebar-post-card-content">
+                    <div class="title">{{ .Title }}</div>
+                    {{ range .Params.categories }}
+                      {{ with $Site.GetPage .id }}
+                        <div class="tag is-primary">{{ .Title }}</div>
+                      {{ end }}
+                    {{ end }}
+                </div>
+              </article>
+            </a>
+          {{ end }}
+        </div>
+        <div class="sidebar-section">
+          <div class="sidebar-title">Check Out My Book!</div>
+          <a href="https://redemption-press.com/shop/how-to-survive-your-hospital-stay-strategies-to-protect-against-preventable-complications/" target="_blank">
+            <img src="https://images.ctfassets.net/p33zztqk2dr3/6NWGGaVy2pSKDhoXJCAyQz/c8718a433d2909e23dd58d133eb93404/9878da75dab12ba162b25f7c98495814.jpeg" alt="">          
+          </a>
+        </div>
       </aside>
     </div>
   </div>
