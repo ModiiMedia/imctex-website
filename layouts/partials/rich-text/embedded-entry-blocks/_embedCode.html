@@ -1,0 +1,5 @@
+{{ with .Site.GetPage .type .id }}
+    <div style="margin-bottom: 1em">
+        {{ .Params.embedCode | safeHTML }}
+    </div>
+{{ end }}
