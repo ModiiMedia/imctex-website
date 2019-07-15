@@ -68,3 +68,10 @@ header.site-header {
         }
     }
 }
+
+.breadcrumb a {
+    color: $grey;
+    &:hover {
+        color: $primary;
+    }
+}
